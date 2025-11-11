@@ -1,0 +1,99 @@
+name: Inject ICA Tweak
+
+# NOTE: This workflow injects the ApolloICA tweak in to add the Apollo API.
+#
+# Tweak created by @JeffreyCA - https://github.com/JeffreyCA
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      apollo_ipa_url:
+        description: 'Direct link to Apollo IPA'
+        default: 'https://github.com/BackyarDEV/apollo-ica-helper/releases/download/BaseIPA/Apollo_1.15.11_1762873670.ipa'
+        required: true
+        type: string
+      release_tag:
+        description: 'ApolloICA Tweak Release tag to download the dylibs from (e.g. 1.2.6)'
+        required: true
+        type: string
+      ica_patch_ipa_url:
+        description: 'ApolloICA Tweak URL (replace this with a working link if the workflow fails)'
+        required: true
+        default: 'https://github.com/JeffreyCA/Apollo-ImprovedCustomApi/releases/download/v-Z-version-Z-/ca.jeffrey.apollo-improvedcustomapi_-Z-version-Z-_iphoneos-arm64_rootless.deb'
+        type: string
+      bundle_id:
+        description: "BundleID (Optional)"
+        default: "com.christianselig.Apollo"
+        required: true
+        type: string
+
+jobs:
+  patch:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: brew install make ldid
+
+      - name: Set PATH environment variable
+        run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
+
+      - name: Install cyan
+        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+
+      - name: Download and validate IPA
+        run: |
+          wget "${{ github.event.inputs.apollo_ipa_url }}" --no-verbose -O ${{ github.workspace }}/Apollo.ipa
+
+          file_type=$(file --mime-type -b ${{ github.workspace }}/Apollo.ipa)
+
+          if [[ "$file_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
+            echo "::error::Validation failed: The downloaded file is not a valid IPA. Detected type: $file_type."
+            exit 1
+          fi
+
+      - name: Download and validate Apollo ICA tweak
+        run: |
+          URL="${{ github.event.inputs.ica_patch_ipa_url }}"
+          RELEASE_TAG="${{ github.event.inputs.release_tag }}"
+          NEW_URL="${URL//-Z-version-Z-/${RELEASE_TAG}}"
+          echo "Downloading Apollo ICA Tweak from: ${NEW_URL}"
+          wget "${NEW_URL}" --no-verbose -O ${{ github.workspace }}/Apollo-ImprovedCustomApi.deb
+
+          file_type=$(file --mime-type -b ${{ github.workspace }}/Apollo-ImprovedCustomApi.deb)
+
+          if [[ "$file_type" != "application/vnd.debian.binary-package" ]]; then
+            echo "::error::Validation failed: The file is not a valid DEB file. Detected type: $file_type."
+            exit 1
+          fi
+
+      - name: Inject Apollo IPA Tweak
+        id: inject_tweak
+        run: |
+          OUTPUT_IPA_NAME="Apollo-Patched_${{ github.event.inputs.release_tag }}.ipa"
+          cyan -i Apollo.ipa -o "${OUTPUT_IPA_NAME}" -f Apollo-ImprovedCustomApi.deb -n "Apollo" -b ${{ github.event.inputs.bundle_id }}
+          
+          echo "patched_ipa_name=${OUTPUT_IPA_NAME}" >> $GITHUB_OUTPUT
+
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.inject_tweak.outputs.patched_ipa_name }}
+          path: ${{ steps.inject_tweak.outputs.patched_ipa_name }}
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2.0.8
+        with:
+          draft: true
+          tag_name: ${{ github.event.inputs.release_tag }}
+          name: Apollo ICA - v${{ github.event.inputs.release_tag }}
+          files: |
+            ${{ steps.inject_tweak.outputs.patched_ipa_name }}
+          prerelease: false
