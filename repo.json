@@ -3,7 +3,7 @@
   "identifier": "com.bakyardev.ApolloICA",
   "subtitle": "A source for ApolloICA App",
   "description": "This is a AltStore source for ApolloICA",
-  "iconURL": "https://github.com/BackyarDEV/apollo-ica-helper",
+  "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/app-icon.png?raw=true",
   "website": "https://github.com/BackyarDEV/apollo-ica-helper",
   "tintColor": "3c94fc",
   "apps": [
@@ -11,7 +11,7 @@
       "name": "ApolloICA",
       "bundleIdentifier": "com.christianselig.Apollo",
       "developerName": "Nagata Asami",
-      "iconURL": "https://github.com/Nyasami/Ksign/blob/v1.5/Ksign/Resources/Assets.xcassets/AppIcon.appiconset/Ksign-default.png?raw=true",
+      "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/app-icon.png?raw=true",
       "localizedDescription": "Apollo v1.15.11 injected with ImprovedCustomAPI (JeffreyCA)!",
       "subtitle": "Apollo with ImprovedCustomAPI (JeffreyCA).",
       "tintColor": "3c94fc",
