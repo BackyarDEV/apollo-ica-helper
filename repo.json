@@ -1,17 +1,17 @@
 {
-  "name": "ApolloICA Repository (botn0ught)",
-  "identifier": "com.bakyardev.ApolloICA",
+  "name": "BackyarDEV's IPA Repo",
+  "identifier": "com.bakyardev.ipa-repo",
   "subtitle": "A source for ApolloICA App",
   "description": "This is a AltStore source for ApolloICA",
-  "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/app-icon.png?raw=true",
+  "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/repo-icon.png?raw=true",
   "website": "https://github.com/BackyarDEV/apollo-ica-helper",
   "tintColor": "3c94fc",
   "apps": [
     {
       "name": "ApolloICA",
       "bundleIdentifier": "com.christianselig.Apollo",
-      "developerName": "Nagata Asami",
-      "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/app-icon.png?raw=true",
+      "developerName": "BackyarDEV",
+      "iconURL": "https://cdn.jim-nielsen.com/ios/512/apollo-for-reddit-2023-07-07.png?rf=1024",
       "localizedDescription": "Apollo v1.15.11 injected with ImprovedCustomAPI (JeffreyCA)!",
       "subtitle": "Apollo with ImprovedCustomAPI (JeffreyCA).",
       "tintColor": "3c94fc",
@@ -22,8 +22,17 @@
           "size": 14000000,
           "version": "1.2.6",
           "buildVersion": "1",
+          "date": "2025-11-11T01:41:00+07:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.2.6 patched with Liquid Glass support.",
+          "minOSVersion": "26.0"
+        },
+        {
+          "downloadURL": "https://github.com/BackyarDEV/apollo-ica-helper/releases/download/1.2.5/Apollo-Patched_1.2.5.ipa",
+          "size": 14000000,
+          "version": "1.2.5",
+          "buildVersion": "1",
           "date": "2025-10-12T01:41:00+07:00",
-          "localizedDescription": "Apollo v1.15.11 injected with ImprovedCustomAPI (JeffreyCA)!\n\nThis version includes the ApolloICA tweak version: 1.2.6.",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.2.6 patched with Liquid Glass support.",
           "minOSVersion": "26.0"
         }
       ],
