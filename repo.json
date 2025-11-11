@@ -11,7 +11,7 @@
       "name": "ApolloICA",
       "bundleIdentifier": "com.christianselig.Apollo",
       "developerName": "BackyarDEV",
-      "iconURL": "https://cdn.jim-nielsen.com/ios/512/apollo-for-reddit-2023-07-07.png?rf=1024",
+      "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/app-icon.png?raw=true",
       "localizedDescription": "Apollo v1.15.11 injected with ImprovedCustomAPI (JeffreyCA)!",
       "subtitle": "Apollo with ImprovedCustomAPI (JeffreyCA).",
       "tintColor": "3c94fc",
