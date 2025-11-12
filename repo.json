@@ -19,7 +19,7 @@
       "versions": [
         {
           "downloadURL": "https://github.com/BackyarDEV/apollo-ica-helper/releases/download/1.2.6/Apollo-Patched_1.2.6.ipa",
-          "size": 14000000,
+          "size": 96172422,
           "version": "1.2.6",
           "buildVersion": "1",
           "date": "2025-11-11T01:41:00+07:00",
@@ -28,7 +28,7 @@
         },
         {
           "downloadURL": "https://github.com/BackyarDEV/apollo-ica-helper/releases/download/1.2.5/Apollo-Patched_1.2.5.ipa",
-          "size": 14000000,
+          "size": 96169719,
           "version": "1.2.5",
           "buildVersion": "1",
           "date": "2025-10-12T01:41:00+07:00",
@@ -38,8 +38,8 @@
       ],
       "appPermissions": {},
       "version": "1.2.6",
-      "versionDate": "2025-07-28T14:04:00+07:00",
-      "size": 13400000,
+      "versionDate": "2025-11-11T14:04:00+07:00",
+      "size": 96172422,
       "downloadURL": "https://github.com/BackyarDEV/apollo-ica-helper/releases/download/1.2.6/Apollo-Patched_1.2.6.ipa"
     }
   ]

@@ -80,7 +80,7 @@ jobs:
           cyan -i Apollo.ipa -o "${OUTPUT_IPA_NAME}" -f Apollo-ImprovedCustomApi.deb -n "Apollo" -b ${{ github.event.inputs.bundle_id }}
           
           echo "patched_ipa_name=${OUTPUT_IPA_NAME}" >> $GITHUB_OUTPUT
-
+          echo "Patched IPA Size: $(stat -f%z ${OUTPUT_IPA_NAME})"
 
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4
