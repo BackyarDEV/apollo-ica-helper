@@ -10,7 +10,7 @@ on:
     inputs:
       apollo_ipa_url:
         description: 'Direct link to Apollo IPA'
-        default: 'https://github.com/BackyarDEV/apollo-ica-helper/releases/download/BaseIPA/Apollo_1.15.11_1762873670.ipa'
+        default: 'https://github.com/BackyarDEV/apollo-ica-helper/releases/download/BaseIPA/Apollo_1.15.11_LG.ipa'
         required: true
         type: string
       release_tag:
