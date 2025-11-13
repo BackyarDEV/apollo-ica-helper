@@ -3,7 +3,7 @@
   "identifier": "com.bakyardev.ipa-repo",
   "subtitle": "A source for ApolloICA App",
   "description": "This is a AltStore source for ApolloICA",
-  "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/repo-icon.png?raw=true",
+  "iconURL": "https://files.catbox.moe/9yj2xu.png",
   "website": "https://github.com/BackyarDEV/apollo-ica-helper",
   "tintColor": "3c94fc",
   "apps": [
@@ -11,14 +11,14 @@
       "name": "ApolloICA",
       "bundleIdentifier": "com.christianselig.Apollo",
       "developerName": "BackyarDEV",
-      "iconURL": "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/icon/app-icon.png?raw=true",
+      "iconURL": "https://files.catbox.moe/t83cfs.png",
       "localizedDescription": "Apollo v1.15.11 injected with ImprovedCustomAPI (JeffreyCA)!",
       "subtitle": "Apollo with ImprovedCustomAPI (JeffreyCA).",
       "tintColor": "3c94fc",
       "category": "News",
       "versions": [
         {
-          "downloadURL": "https://github.com/BackyarDEV/apollo-ica-helper/releases/download/1.2.6/Apollo-Patched_1.2.6.ipa",
+          "downloadURL": "https://files.catbox.moe/h6aj5d.ipa",
           "size": 96172422,
           "version": "1.2.6",
           "buildVersion": "1",
@@ -27,7 +27,7 @@
           "minOSVersion": "26.0"
         },
         {
-          "downloadURL": "https://github.com/BackyarDEV/apollo-ica-helper/releases/download/1.2.5/Apollo-Patched_1.2.5.ipa",
+          "downloadURL": "https://files.catbox.moe/pp1k7z.ipa",
           "size": 96169719,
           "version": "1.2.5",
           "buildVersion": "1",
@@ -40,7 +40,7 @@
       "version": "1.2.6",
       "versionDate": "2025-11-11T14:04:00+07:00",
       "size": 96172422,
-      "downloadURL": "https://github.com/BackyarDEV/apollo-ica-helper/releases/download/1.2.6/Apollo-Patched_1.2.6.ipa"
+      "downloadURL": "https://files.catbox.moe/h6aj5d.ipa"
     }
   ]
 }
