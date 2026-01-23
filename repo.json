@@ -23,7 +23,7 @@
           "version": "1.4.0",
           "buildVersion": "1",
           "date": "2026-01-22T01:41:00+07:00",
-          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.0 patched with Liquid Glass support.",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.0 patched with Liquid Glass support.\n\n• Support custom redirect URIs and user agents (in Settings > General > Custom API)\n\t• This should enable certain workarounds for getting new API keys\n\t• Custom redirect URIs require patching the IPA\n• Liquid Glass: fix sort options alignment in comment view",
           "minOSVersion": "26.0"
         },
         {
