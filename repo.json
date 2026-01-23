@@ -18,6 +18,42 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/q8py9e.ipa",
+          "size": 96005016,
+          "version": "1.4.0",
+          "buildVersion": "1",
+          "date": "2026-01-22T01:41:00+07:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.0 patched with Liquid Glass support.",
+          "minOSVersion": "26.0"
+        },
+        {
+          "downloadURL": "https://files.catbox.moe/dtjc7s.ipa",
+          "size": 96004734,
+          "version": "1.3.2",
+          "buildVersion": "1",
+          "date": "2026-01-17T01:41:00+07:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.3.2 patched with Liquid Glass support.",
+          "minOSVersion": "26.0"
+        },
+        {
+          "downloadURL": "https://files.catbox.moe/24730z.ipa",
+          "size": 96004615,
+          "version": "1.3.1",
+          "buildVersion": "1",
+          "date": "2026-01-15T01:41:00+07:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.3.1 patched with Liquid Glass support.",
+          "minOSVersion": "26.0"
+        },
+        {
+          "downloadURL": "https://files.catbox.moe/hglxji.ipa",
+          "size": 95998837,
+          "version": "1.3.0",
+          "buildVersion": "1",
+          "date": "2025-12-25T01:41:00+07:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.3.0 patched with Liquid Glass support.",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/h6aj5d.ipa",
           "size": 96172422,
           "version": "1.2.6",
