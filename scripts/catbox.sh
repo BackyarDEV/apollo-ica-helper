@@ -29,6 +29,8 @@
 # SOFTWARE.
 #
 
+set -x
+
 VERSION="2.0"
 
 CATBOX_HOST="https://catbox.moe/user/api.php"
