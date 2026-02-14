@@ -30,6 +30,7 @@ on:
 
 env:
   RELEASE_INFO_URL: "https://api.github.com/repos/JeffreyCA/Apollo-ImprovedCustomApi/releases/tags/v${{ github.event.inputs.release_tag }}"
+  CATBOX_BASH_SCRIPT_URL: "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/scripts/catbox.sh"
 
 jobs:
   patch:
@@ -117,40 +118,25 @@ jobs:
             echo "::error::CATBOX_USER_HASH secret is not configured."
             exit 1
           fi
+          
+          wget "${CATBOX_BASH_SCRIPT_URL}" --no-verbose -O ${{ github.workspace }}/catbox.sh
+          chmod +x ${{ github.workspace }}/catbox.sh
+          
+          ./catbox.sh user "${CATBOX_USER_HASH}"
+          
+          CATBOX_RESP=$(./catbox.sh -S upload "${{ steps.inject_tweak.outputs.patched_ipa_name }}")
+          
           echo "Uploading patched IPA to Catbox named: ${{ steps.inject_tweak.outputs.patched_ipa_name }}"
-
-          # Capture full HTTP response body and the HTTP status code
-          HTTP_RESPONSE=$(curl --silent --show-error --write-out "HTTPSTATUS:%{http_code}" --request POST \
-            --url https://catbox.moe/user/api.php \
-            --form "fileToUpload=@${{ steps.inject_tweak.outputs.patched_ipa_name }}" \
-            --form "userhash=${CATBOX_USER_HASH}" \
-            --form reqtype=fileupload)
-
-          # Separate the body and the status code
-          HTTP_STATUS=$(echo "$HTTP_RESPONSE" | tr -d '\r\n' | sed -e 's/.*HTTPSTATUS://')
-          HTTP_BODY=$(echo "$HTTP_RESPONSE" | sed -e 's/HTTPSTATUS:.*//g')
-
-          # Trim whitespace/newlines from the body so the URL is safe to embed in markdown
-          HTTP_BODY_TRIMMED=$(printf '%s' "$HTTP_BODY" | tr -d '\r' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-
-          echo "Catbox HTTP status: ${HTTP_STATUS}"
-          echo "Catbox body (trimmed): ${HTTP_BODY_TRIMMED}"
-
-          # Check for expected successful HTTP status
-          if [[ "$HTTP_STATUS" -ne 200 ]]; then
-            echo "::error::Catbox upload failed with HTTP status ${HTTP_STATUS}. Response: ${HTTP_BODY_TRIMMED}"
-            exit 1
-          fi
-
-          # Validate the trimmed response body contains the expected Catbox file URL
-          if [[ ! "$HTTP_BODY_TRIMMED" =~ ^https://files\.catbox\.moe ]]; then
-            echo "::error::Unexpected response from Catbox upload: ${HTTP_BODY_TRIMMED}"
+          echo "Raw Catbox response: ${CATBOX_RESP}"
+          
+          if [[ ! "CATBOX_RESP" =~ https://files\.catbox\.moe ]]; then
+            echo "::error::Unexpected response from Catbox upload: ${CATBOX_RESP}"
             exit 1
           fi
 
           # Save output for later steps (trimmed)
-          echo "catbox_url=${HTTP_BODY_TRIMMED}" >> "$GITHUB_OUTPUT"
-          echo "Uploaded IPA to Catbox: ${HTTP_BODY_TRIMMED}"
+          echo "catbox_url=${CATBOX_RESP}" >> "$GITHUB_OUTPUT"
+          echo "Uploaded IPA to Catbox: ${CATBOX_RESP}"
 
       - name: Create release
         uses: softprops/action-gh-release@v2.0.8
