@@ -427,10 +427,27 @@ temp)
         echo "By default, temporary files will expire after an hour"
         exit 1;
     fi
-    [[ ${@: -1:1} == @(1|12|24|72)h ]] && time=${@: -1:1} && end=-1 || time=1h || end=0
+
+    # Portable: get the last argument without using negative slicing
+    last=""
+    for arg in "$@"; do last="$arg"; done
+
+    case "$last" in
+        1h|12h|24h|72h)
+            time="$last"
+            # Number of file arguments = total args - 2 (command + time)
+            num_files=$(($# - 2))
+            files=( "${@:2:$num_files}" )
+            ;;
+        *)
+            time="1h"
+            files=( "${@:2}" )
+            ;;
+    esac
+
     CURL_ADD="-F time=$time"
     echo "Uploading temporarily..."
-    upload_files $LITTER_HOST "${@:2:$#-1$end}"
+    upload_files $LITTER_HOST "${files[@]}"
     ;;
 url)
     if [ $# -eq 1 ]
