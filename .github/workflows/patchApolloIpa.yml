@@ -106,7 +106,7 @@ jobs:
             --form reqtype=fileupload)
 
           echo "Catbox response: $CATBOX_URL"
-          if [[ ! "$CATBOX_URL" =~ ^https?:// ]]; then
+          if [[ ! "$CATBOX_URL" =~ https://files\.catbox\.moe ]]; then
             echo "::error::Unexpected response from Catbox upload: $CATBOX_URL"
             exit 1
           fi
