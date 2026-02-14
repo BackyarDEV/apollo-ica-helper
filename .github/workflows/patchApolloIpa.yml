@@ -97,6 +97,8 @@ jobs:
             echo "::error::CATBOX_USER_HASH secret is not configured."
             exit 1
           fi
+          echo "Found catbox user hash - ::add-mask::$CATBOX_USER_HASH"
+          echo "Uploading patched IPA to Catbox named: ${{ steps.inject_tweak.outputs.patched_ipa_name }}"
 
           CATBOX_URL=$(curl --silent --show-error --fail --request POST \
             --url https://catbox.moe/user/api.php \
