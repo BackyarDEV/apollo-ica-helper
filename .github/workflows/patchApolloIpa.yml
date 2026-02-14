@@ -28,6 +28,9 @@ on:
         required: true
         type: string
 
+env:
+  RELEASE_INFO_URL: "https://api.github.com/repos/JeffreyCA/Apollo-ImprovedCustomApi/releases/tags/v${{ github.event.inputs.release_tag }}"
+
 jobs:
   patch:
     runs-on: macos-latest
@@ -35,6 +38,23 @@ jobs:
       contents: write
 
     steps:
+      - name: Fetch Release Name
+        id: fetch_release_name
+        run: |
+          
+          RELEASE_INFO=$(curl --silent --show-error --fail --request POST --url "$RELEASE_INFO_URL")
+          
+          RELEASE_NAME=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('name',''))")
+          
+          if [[ -z "$RELEASE_NAME" ]]; then
+            echo "::error::Failed to extract 'name' from release JSON."
+            exit 1
+          fi
+
+          RELEASE_DESC=$(printf '%s' "$RELEASE_NAME" | python3 -c "import sys; s=sys.stdin.read().strip(); parts=s.split(' - ',1); print(parts[1] if len(parts)>1 else s)")
+
+          echo "release_desc=${RELEASE_DESC}" >> $GITHUB_OUTPUT
+
       - name: Check out repository
         uses: actions/checkout@v4
 
@@ -105,7 +125,6 @@ jobs:
             --form "userhash=${CATBOX_USER_HASH}" \
             --form reqtype=fileupload)
 
-          echo "Catbox response: $CATBOX_URL"
           if [[ ! "$CATBOX_URL" =~ https://files\.catbox\.moe ]]; then
             echo "::error::Unexpected response from Catbox upload: $CATBOX_URL"
             exit 1
@@ -121,7 +140,8 @@ jobs:
           tag_name: ${{ github.event.inputs.release_tag }}
           name: Apollo ICA - v${{ github.event.inputs.release_tag }}
           body: |
-            Catbox download: ${{ steps.upload_catbox.outputs.catbox_url }}
+            - ${{ steps.fetch_release_name.outputs.release_desc }}
+            - [Catbox download](${{ steps.upload_catbox.outputs.catbox_url }}})
           files: |
             ${{ steps.inject_tweak.outputs.patched_ipa_name }}
           prerelease: false
