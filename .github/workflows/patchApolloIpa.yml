@@ -42,7 +42,7 @@ jobs:
         id: fetch_release_name
         run: |
           
-          RELEASE_INFO=$(curl --silent --show-error --fail --request POST --url "$RELEASE_INFO_URL")
+          RELEASE_INFO=$(curl --silent --show-error --fail --request GET --url "$RELEASE_INFO_URL")
           
           RELEASE_NAME=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('name',''))")
           
