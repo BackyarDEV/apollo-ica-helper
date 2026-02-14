@@ -42,8 +42,9 @@ jobs:
       - name: Fetch Release Name
         id: fetch_release_name
         run: |
+          echo "Fetching release information from: $RELEASE_INFO_URL"
           
-          RELEASE_INFO=$(curl --silent --show-error --fail --request GET --url "$RELEASE_INFO_URL")
+          RELEASE_INFO=$(curl --silent --show-error --fail -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" --request GET --url "$RELEASE_INFO_URL")
           
           RELEASE_NAME=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('name',''))")
           
@@ -54,6 +55,7 @@ jobs:
 
           RELEASE_DESC=$(printf '%s' "$RELEASE_NAME" | python3 -c "import sys; s=sys.stdin.read().strip(); parts=s.split(' - ',1); print(parts[1] if len(parts)>1 else s)")
 
+          echo "Fetched release desc: RELEASE_DESC"
           echo "release_desc=${RELEASE_DESC}" >> $GITHUB_OUTPUT
 
       - name: Check out repository
