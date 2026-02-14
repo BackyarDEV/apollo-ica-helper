@@ -88,12 +88,38 @@ jobs:
           name: ${{ steps.inject_tweak.outputs.patched_ipa_name }}
           path: ${{ steps.inject_tweak.outputs.patched_ipa_name }}
 
+      - name: Upload IPA to Catbox
+        id: upload_catbox
+        env:
+          CATBOX_USER_HASH: ${{ secrets.CATBOX_USER_HASH }}
+        run: |
+          if [[ -z "$CATBOX_USER_HASH" ]]; then
+            echo "::error::CATBOX_USER_HASH secret is not configured."
+            exit 1
+          fi
+
+          CATBOX_URL=$(curl --silent --show-error --fail --request POST \
+            --url https://catbox.moe/user/api.php \
+            --form "fileToUpload=@${{ steps.inject_tweak.outputs.patched_ipa_name }}" \
+            --form "userhash=${CATBOX_USER_HASH}" \
+            --form reqtype=fileupload)
+
+          if [[ ! "$CATBOX_URL" =~ ^https?:// ]]; then
+            echo "::error::Unexpected response from Catbox upload: $CATBOX_URL"
+            exit 1
+          fi
+
+          echo "catbox_url=${CATBOX_URL}" >> "$GITHUB_OUTPUT"
+          echo "Uploaded IPA to Catbox: ${CATBOX_URL}"
+
       - name: Create release
         uses: softprops/action-gh-release@v2.0.8
         with:
           draft: true
           tag_name: ${{ github.event.inputs.release_tag }}
           name: Apollo ICA - v${{ github.event.inputs.release_tag }}
+          body: |
+            Catbox download: ${{ steps.upload_catbox.outputs.catbox_url }}
           files: |
             ${{ steps.inject_tweak.outputs.patched_ipa_name }}
           prerelease: false
