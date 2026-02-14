@@ -27,6 +27,11 @@ on:
         default: "com.christianselig.Apollo"
         required: true
         type: string
+      upload_catbox:
+        description: 'Whether to upload the patched IPA to Catbox (true/false)'
+        required: false
+        default: true
+        type: boolean
 
 env:
   RELEASE_INFO_URL: "https://api.github.com/repos/JeffreyCA/Apollo-ImprovedCustomApi/releases/tags/v${{ github.event.inputs.release_tag }}"
@@ -113,6 +118,7 @@ jobs:
 
       - name: Upload IPA to Catbox
         id: upload_catbox
+        if: ${{ github.event.inputs.upload_catbox == 'true' }}
         env:
           CATBOX_USER_HASH: ${{ secrets.CATBOX_USER_HASH }}
         run: |
@@ -131,7 +137,7 @@ jobs:
           echo "Uploading patched IPA to Catbox named: ${{ steps.inject_tweak.outputs.patched_ipa_name }}"
           echo "Raw Catbox response: ${CATBOX_RESP}"
           
-          if [[ ! "CATBOX_RESP" =~ https://files\.catbox\.moe ]]; then
+          if [[ ! "CATBOX_RESP" =~ https://files\\.catbox\\.moe ]]; then
             echo "::error::Unexpected response from Catbox upload: ${CATBOX_RESP}"
             exit 1
           fi
@@ -148,7 +154,7 @@ jobs:
           name: Apollo ICA - v${{ github.event.inputs.release_tag }}
           body: |
             - ${{ steps.fetch_release_name.outputs.release_desc }}
-            - [Catbox download](${{ steps.upload_catbox.outputs.catbox_url }})
+            ${{ if eq(github.event.inputs.upload_catbox, 'true') }}- [Catbox download](${{ steps.upload_catbox.outputs.catbox_url }})${{ end }}
           files: |
             ${{ steps.inject_tweak.outputs.patched_ipa_name }}
           prerelease: false
