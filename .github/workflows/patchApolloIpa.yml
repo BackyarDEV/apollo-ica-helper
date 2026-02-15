@@ -39,6 +39,8 @@ env:
 
 jobs:
   patch:
+    # Ensure this job only runs for manual (workflow_dispatch) triggers as an extra safety guard
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: macos-latest
     permissions:
       contents: write
@@ -60,7 +62,7 @@ jobs:
 
           RELEASE_DESC=$(printf '%s' "$RELEASE_NAME" | python3 -c "import sys; s=sys.stdin.read().strip(); parts=s.split(' - ',1); print(parts[1] if len(parts)>1 else s)")
 
-          echo "Fetched release desc: RELEASE_DESC"
+          echo "Fetched release desc: ${RELEASE_DESC}"
           echo "release_desc=${RELEASE_DESC}" >> $GITHUB_OUTPUT
 
       - name: Check out repository
@@ -118,7 +120,7 @@ jobs:
 
       - name: Upload IPA to Catbox
         id: upload_catbox
-        if: ${{ github.event.inputs.upload_catbox == 'true' }}
+        if: ${{ github.event.inputs.upload_catbox }}
         env:
           CATBOX_USER_HASH: ${{ secrets.CATBOX_USER_HASH }}
         run: |
@@ -137,7 +139,7 @@ jobs:
           CATBOX_LINK=$(cat catbox_link.txt)
           echo "Catbox file link: ${CATBOX_LINK}"
           
-          if [[ ! "CATBOX_LINK" =~ https ]]; then
+          if [[ ! "$CATBOX_LINK" =~ ^https ]]; then
             echo "::error::Unexpected response from Catbox upload: ${CATBOX_LINK}"
             exit 1
           fi
@@ -153,7 +155,7 @@ jobs:
           name: Apollo ICA - v${{ github.event.inputs.release_tag }}
           body: |
             - ${{ steps.fetch_release_name.outputs.release_desc }}
-            ${{ if eq(github.event.inputs.upload_catbox, 'true') }}- [Catbox download](${{ steps.upload_catbox.outputs.catbox_url }})${{ end }}
+            ${{ if github.event.inputs.upload_catbox }}- [Catbox download](${{ steps.upload_catbox.outputs.catbox_url }})${{ end }}
           files: |
             ${{ steps.inject_tweak.outputs.patched_ipa_name }}
           prerelease: false
