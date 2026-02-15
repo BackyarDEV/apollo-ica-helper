@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/afao47.ipa",
+          "size": 96237049,
+          "version": "1.4.3",
+          "buildVersion": "1",
+          "date": "2026-02-15T08:41:49.910725+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.3 patched with Liquid Glass support.\n\n- Fix inline Giphy GIFs not loading in comments (#99)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/b5q246.ipa",
           "size": 96233956,
           "version": "1.4.2",
@@ -91,10 +100,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "1.4.2",
-      "versionDate": "2026-02-15T08:38:35.897327+00:00",
-      "size": 96233956,
-      "downloadURL": "https://files.catbox.moe/b5q246.ipa"
+      "version": "1.4.3",
+      "versionDate": "2026-02-15T08:41:49.910725+00:00",
+      "size": 96237049,
+      "downloadURL": "https://files.catbox.moe/afao47.ipa"
     }
   ]
 }
