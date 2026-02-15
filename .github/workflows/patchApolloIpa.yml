@@ -53,8 +53,6 @@ jobs:
           RELEASE_INFO=$(curl --silent --show-error --fail -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" --request GET --url "$RELEASE_INFO_URL")
           
           RELEASE_NOTES=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body',''))")
-          RELEASE_NOTES="${RELEASE_NOTES//- /• }"
-          RELEASE_NOTES="${RELEASE_NOTES//\r\n    - /n	◦ }"
           
           if [[ -z "$RELEASE_NOTES" ]]; then
             echo "::error::Failed to extract 'body' from release JSON."
