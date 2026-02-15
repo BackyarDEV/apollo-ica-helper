@@ -29,8 +29,6 @@
 # SOFTWARE.
 #
 
-set -x
-
 VERSION="2.0"
 
 CATBOX_HOST="https://catbox.moe/user/api.php"
@@ -105,6 +103,7 @@ function upload_files() {
         echo -en "Uploaded to: "$BOLD
         echo $link >&5
         echo -en $RESET
+        echo -n $link > catbox_link.txt
     done
     [ $fail -eq $[$#-1] ] && exit 2
     return 0

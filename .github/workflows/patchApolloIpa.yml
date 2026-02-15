@@ -1,6 +1,6 @@
 name: Inject ICA Tweak
 
-# NOTE: This workflow injects the ApolloICA tweak in to add the Apollo API.
+# NOTE: This workflow injects the ApolloICA tweak in the Apollo IPA.
 #
 # Tweak created by @JeffreyCA - https://github.com/JeffreyCA
 
@@ -29,7 +29,7 @@ on:
         type: string
       upload_catbox:
         description: 'Whether to upload the patched IPA to Catbox (true/false)'
-        required: false
+        required: true
         default: true
         type: boolean
 
@@ -130,21 +130,20 @@ jobs:
           wget "${CATBOX_BASH_SCRIPT_URL}" --no-verbose -O ${{ github.workspace }}/catbox.sh
           chmod +x ${{ github.workspace }}/catbox.sh
           
-          ./catbox.sh user "${CATBOX_USER_HASH}"
-          
-          CATBOX_RESP=$(./catbox.sh -S upload "${{ steps.inject_tweak.outputs.patched_ipa_name }}")
-          
           echo "Uploading patched IPA to Catbox named: ${{ steps.inject_tweak.outputs.patched_ipa_name }}"
-          echo "Raw Catbox response: ${CATBOX_RESP}"
           
-          if [[ ! "CATBOX_RESP" =~ https://files\\.catbox\\.moe ]]; then
-            echo "::error::Unexpected response from Catbox upload: ${CATBOX_RESP}"
+          ./catbox.sh -V upload "${{ steps.inject_tweak.outputs.patched_ipa_name }}" -u "$CATBOX_USER_HASH"
+          
+          CATBOX_LINK=$(cat catbox_link.txt)
+          echo "Catbox file link: ${CATBOX_LINK}"
+          
+          if [[ ! "CATBOX_LINK" =~ https ]]; then
+            echo "::error::Unexpected response from Catbox upload: ${CATBOX_LINK}"
             exit 1
           fi
 
-          # Save output for later steps (trimmed)
-          echo "catbox_url=${CATBOX_RESP}" >> "$GITHUB_OUTPUT"
-          echo "Uploaded IPA to Catbox: ${CATBOX_RESP}"
+          echo "catbox_url=${CATBOX_LINK}" >> "$GITHUB_OUTPUT"
+          echo "Uploaded IPA to Catbox: ${CATBOX_LINK}"
 
       - name: Create release
         uses: softprops/action-gh-release@v2.0.8
