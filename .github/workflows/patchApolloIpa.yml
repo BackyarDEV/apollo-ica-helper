@@ -60,7 +60,7 @@ jobs:
             exit 1
           fi
 
-          echo "release_notes=${RELEASE_NOTES}" >> release_notes.txt
+          echo "release_notes=${RELEASE_NOTES}" >> ${{ github.workspace }}/release_notes.txt
 
       - name: Check out repository
         uses: actions/checkout@v4
@@ -169,7 +169,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          RELEASE_NOTES=$(cat release_notes.txt)
+          RELEASE_NOTES=$(cat ${{ github.workspace }}/release_notes.txt)
 
           # run the update script
           python3 scripts/update_repo_json.py -t "${RELEASE_TAG}" -u "${CATBOX_URL}" -n "${RELEASE_NOTES}" -s "${SIZE}"
