@@ -35,7 +35,6 @@ on:
 
 env:
   RELEASE_INFO_URL: "https://api.github.com/repos/JeffreyCA/Apollo-ImprovedCustomApi/releases/tags/v${{ github.event.inputs.release_tag }}"
-  CATBOX_BASH_SCRIPT_URL: "https://raw.githubusercontent.com/BackyarDEV/apollo-ica-helper/refs/heads/main/scripts/catbox.sh"
 
 jobs:
   patch:
@@ -55,7 +54,7 @@ jobs:
           
           RELEASE_NOTES=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body',''))")
           
-          if [[ -z "RELEASE_NOTES" ]]; then
+          if [[ -z "$RELEASE_NOTES" ]]; then
             echo "::error::Failed to extract 'body' from release JSON."
             exit 1
           fi
@@ -129,16 +128,16 @@ jobs:
             exit 1
           fi
           
-          if [[ ! -f "scripts/catbox.sh" ]]; then
-            echo "Can't access catbox.sh script at expected path: scripts/catbox.sh."
+          if [[ ! -f "./scripts/catbox.sh" ]]; then
+            echo "Can't access catbox.sh script at expected path: ./scripts/catbox.sh."
             exit 1
           fi
           
-          chmod +x scripts/catbox.sh
+          chmod +x ./scripts/catbox.sh
           
           echo "Uploading patched IPA to Catbox named: ${{ steps.inject_tweak.outputs.patched_ipa_name }}"
           
-          .scripts/catbox.sh file "${{ steps.inject_tweak.outputs.patched_ipa_name }}" -u "$CATBOX_USER_HASH"
+          ./scripts/catbox.sh file "${{ steps.inject_tweak.outputs.patched_ipa_name }}" -u "$CATBOX_USER_HASH"
           
           CATBOX_LINK=$(cat catbox_link.txt)  
           echo "Catbox file link: ${CATBOX_LINK}"
@@ -172,7 +171,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # run the update script
-          python3 scripts/update_repo_json.py -t "${RELEASE_TAG}" -u "${CATBOX_URL}" -n "${RELEASE_NOTES} -s ${SIZE}"
+          python3 scripts/update_repo_json.py -t "${RELEASE_TAG}" -u "${CATBOX_URL}" -n "${RELEASE_NOTES}" -s "${SIZE}"
 
           # commit and push only if there are changes
           git add repo.json
