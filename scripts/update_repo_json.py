@@ -73,7 +73,6 @@ def main():
     parts = [f"This version includes the ApolloICA tweak version: {release} patched with Liquid Glass support."]
     if release_notes:
         # keep release notes as provided; if multi-line it's preserved
-        parts.append("• ")
         parts.append(release_notes)
 
     new_localized = "\n\n".join(parts).strip()

@@ -23,7 +23,7 @@
           "version": "1.4.1",
           "buildVersion": "1",
           "date": "2026-02-15T07:38:56.597487+00:00",
-          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.1 patched with Liquid Glass support.\n\n• \n\n- Fix certain Streamable links not loading in media view (https://github.com/JeffreyCA/Apollo-ImprovedCustomApi/pull/95)",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.1 patched with Liquid Glass support.\n\n• Fix certain Streamable links not loading in media view (https://github.com/JeffreyCA/Apollo-ImprovedCustomApi/pull/95)",
           "minOSVersion": "26.0"
         },
         {
