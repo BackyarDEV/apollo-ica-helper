@@ -60,7 +60,7 @@ jobs:
             exit 1
           fi
 
-          echo "release_notes=${RELEASE_NOTES}" >> $GITHUB_OUTPUT
+          echo "release_notes=${RELEASE_NOTES}" >> release_notes.txt
 
       - name: Check out repository
         uses: actions/checkout@v4
@@ -161,7 +161,6 @@ jobs:
         env:
           RELEASE_TAG: ${{ github.event.inputs.release_tag }}
           CATBOX_URL: ${{ steps.upload_catbox.outputs.catbox_url }}
-          RELEASE_NOTES: ${{ steps.fetch_release_notes.outputs.release_notes }}
           SIZE: ${{ steps.inject_tweak.outputs.patched_ipa_size }}
         run: |
           set -e
@@ -169,6 +168,8 @@ jobs:
           # configure commit author
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          RELEASE_NOTES=$(cat release_notes.txt)
 
           # run the update script
           python3 scripts/update_repo_json.py -t "${RELEASE_TAG}" -u "${CATBOX_URL}" -n "${RELEASE_NOTES}" -s "${SIZE}"
