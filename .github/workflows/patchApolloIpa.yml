@@ -153,9 +153,7 @@ jobs:
           draft: true
           tag_name: ${{ github.event.inputs.release_tag }}
           name: Apollo ICA - v${{ github.event.inputs.release_tag }}
-          body: |
-            - ${{ steps.fetch_release_name.outputs.release_desc }}
-            ${{ if github.event.inputs.upload_catbox }}- [Catbox download](${{ steps.upload_catbox.outputs.catbox_url }})${{ end }}
+          body: ${{ github.event.inputs.upload_catbox && format('- {0}\n- [Catbox download]({1})', steps.fetch_release_name.outputs.release_desc, steps.upload_catbox.outputs.catbox_url) || format('- {0}', steps.fetch_release_name.outputs.release_desc) }}
           files: |
             ${{ steps.inject_tweak.outputs.patched_ipa_name }}
           prerelease: false
