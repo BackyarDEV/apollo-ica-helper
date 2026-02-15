@@ -46,24 +46,22 @@ jobs:
       contents: write
 
     steps:
-      - name: Fetch Release Name
-        id: fetch_release_name
+      - name: Fetch Release Notes
+        id: fetch_release_notes
         run: |
-          echo "Fetching release information from: $RELEASE_INFO_URL"
+          echo "Fetching release notes from: $RELEASE_INFO_URL"
           
           RELEASE_INFO=$(curl --silent --show-error --fail -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" --request GET --url "$RELEASE_INFO_URL")
           
-          RELEASE_NAME=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('name',''))")
+          RELEASE_NOTES=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body',''))")
           
-          if [[ -z "$RELEASE_NAME" ]]; then
-            echo "::error::Failed to extract 'name' from release JSON."
+          if [[ -z "RELEASE_NOTES" ]]; then
+            echo "::error::Failed to extract 'body' from release JSON."
             exit 1
           fi
 
-          RELEASE_DESC=$(printf '%s' "$RELEASE_NAME" | python3 -c "import sys; s=sys.stdin.read().strip(); parts=s.split(' - ',1); print(parts[1] if len(parts)>1 else s)")
-
-          echo "Fetched release desc: ${RELEASE_DESC}"
-          echo "release_desc=${RELEASE_DESC}" >> $GITHUB_OUTPUT
+          echo "Fetched release desc: ${RELEASE_NOTES}"
+          echo "release_notes=${RELEASE_NOTES}" >> $GITHUB_OUTPUT
 
       - name: Check out repository
         uses: actions/checkout@v4
@@ -108,9 +106,11 @@ jobs:
         run: |
           OUTPUT_IPA_NAME="Apollo-Patched_${{ github.event.inputs.release_tag }}.ipa"
           cyan -i Apollo.ipa -o "${OUTPUT_IPA_NAME}" -f Apollo-ImprovedCustomApi.deb -n "Apollo" -b ${{ github.event.inputs.bundle_id }}
+          IPA_SIZE=$(stat -f%z "${OUTPUT_IPA_NAME}")
+          echo "Patched IPA Size: $(stat -f%z ${OUTPUT_IPA_NAME})"
           
           echo "patched_ipa_name=${OUTPUT_IPA_NAME}" >> $GITHUB_OUTPUT
-          echo "Patched IPA Size: $(stat -f%z ${OUTPUT_IPA_NAME})"
+          echo "patched_ipa_size=${IPA_SIZE}" >> $GITHUB_OUTPUT
 
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4
@@ -129,14 +129,18 @@ jobs:
             exit 1
           fi
           
-          wget "${CATBOX_BASH_SCRIPT_URL}" --no-verbose -O ${{ github.workspace }}/catbox.sh
-          chmod +x ${{ github.workspace }}/catbox.sh
+          if [[ ! -f "scripts/catbox.sh" ]]; then
+            echo "Can't access catbox.sh script at expected path: scripts/catbox.sh."
+            exit 1
+          fi
+          
+          chmod +x scripts/catbox.sh
           
           echo "Uploading patched IPA to Catbox named: ${{ steps.inject_tweak.outputs.patched_ipa_name }}"
           
-          ./catbox.sh file "${{ steps.inject_tweak.outputs.patched_ipa_name }}" -u "$CATBOX_USER_HASH"
+          .scripts/catbox.sh file "${{ steps.inject_tweak.outputs.patched_ipa_name }}" -u "$CATBOX_USER_HASH"
           
-          CATBOX_LINK=$(cat catbox_link.txt)
+          CATBOX_LINK=$(cat catbox_link.txt)  
           echo "Catbox file link: ${CATBOX_LINK}"
           
           if [[ ! "$CATBOX_LINK" =~ ^https ]]; then
@@ -147,13 +151,45 @@ jobs:
           echo "catbox_url=${CATBOX_LINK}" >> "$GITHUB_OUTPUT"
           echo "Uploaded IPA to Catbox: ${CATBOX_LINK}"
 
+      - name: Check out repository for push
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Update repo.json and push
+        id: update_repo_json
+        env:
+          RELEASE_TAG: ${{ github.event.inputs.release_tag }}
+          CATBOX_URL: ${{ steps.upload_catbox.outputs.catbox_url }}
+          RELEASE_NOTES: ${{ steps.fetch_release_notes.outputs.release_notes }}
+          SIZE: ${{ steps.inject_tweak.outputs.patched_ipa_size }}
+        run: |
+          set -e
+
+          # configure commit author
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # run the update script
+          python3 scripts/update_repo_json.py -t "${RELEASE_TAG}" -u "${CATBOX_URL}" -n "${RELEASE_NOTES} -s ${SIZE}"
+
+          # commit and push only if there are changes
+          git add repo.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update repo.json last_release to ${RELEASE_TAG}"
+            git push
+          fi
+
       - name: Create release
         uses: softprops/action-gh-release@v2.0.8
         with:
-          draft: true
+          draft: false
           tag_name: ${{ github.event.inputs.release_tag }}
           name: Apollo ICA - v${{ github.event.inputs.release_tag }}
-          body: ${{ github.event.inputs.upload_catbox && format('- {0}\n- [Catbox download]({1})', steps.fetch_release_name.outputs.release_desc, steps.upload_catbox.outputs.catbox_url) || format('- {0}', steps.fetch_release_name.outputs.release_desc) }}
+          body: ${{ github.event.inputs.upload_catbox && format('- {0} - [Catbox Link]({1})', steps.fetch_release_notes.outputs.release_notes, steps.upload_catbox.outputs.catbox_url) || format('- {0}', steps.fetch_release_notes.outputs.release_notes) }}
           files: |
             ${{ steps.inject_tweak.outputs.patched_ipa_name }}
           prerelease: false
