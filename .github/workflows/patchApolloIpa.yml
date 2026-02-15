@@ -54,12 +54,12 @@ jobs:
           
           RELEASE_NOTES=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body',''))")
           
+          echo "Fetched release notes: ${RELEASE_NOTES}"
           if [[ -z "$RELEASE_NOTES" ]]; then
             echo "::error::Failed to extract 'body' from release JSON."
             exit 1
           fi
 
-          echo "Fetched release desc: ${RELEASE_NOTES}"
           echo "release_notes=${RELEASE_NOTES}" >> $GITHUB_OUTPUT
 
       - name: Check out repository
