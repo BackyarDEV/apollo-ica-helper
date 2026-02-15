@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/v2u2kq.ipa",
+          "size": 96239238,
+          "version": "1.4.4",
+          "buildVersion": "1",
+          "date": "2026-02-15T08:55:16.966697+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.4 patched with Liquid Glass support.\n\nFix certain GIFs showing up as `Processing img <id>` in comments (#102)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/afao47.ipa",
           "size": 96237049,
           "version": "1.4.3",
@@ -100,10 +109,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "1.4.3",
-      "versionDate": "2026-02-15T08:41:49.910725+00:00",
-      "size": 96237049,
-      "downloadURL": "https://files.catbox.moe/afao47.ipa"
+      "version": "1.4.4",
+      "versionDate": "2026-02-15T08:55:16.966697+00:00",
+      "size": 96239238,
+      "downloadURL": "https://files.catbox.moe/v2u2kq.ipa"
     }
   ]
 }
