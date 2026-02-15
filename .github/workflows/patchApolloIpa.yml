@@ -54,13 +54,16 @@ jobs:
           
           RELEASE_NOTES=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body',''))")
           
-          echo "Fetched release notes: ${RELEASE_NOTES}"
+          echo "Fetched release notes:"
+          echo "${RELEASE_NOTES}"
           if [[ -z "$RELEASE_NOTES" ]]; then
             echo "::error::Failed to extract 'body' from release JSON."
             exit 1
-          fi
+          fi=
 
-          echo "release_notes=${RELEASE_NOTES}" >> ${{ github.workspace }}/release_notes.txt
+          echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+          printf '%s' "$RELEASE_NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Check out repository
         uses: actions/checkout@v4
@@ -162,14 +165,13 @@ jobs:
           RELEASE_TAG: ${{ github.event.inputs.release_tag }}
           CATBOX_URL: ${{ steps.upload_catbox.outputs.catbox_url }}
           SIZE: ${{ steps.inject_tweak.outputs.patched_ipa_size }}
+          RELEASE_NOTES: ${{ steps.fetch_release_notes.outputs.release_notes }}
         run: |
           set -e
 
           # configure commit author
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          RELEASE_NOTES=$(cat ${{ github.workspace }}/release_notes.txt)
 
           # run the update script
           python3 scripts/update_repo_json.py -t "${RELEASE_TAG}" -u "${CATBOX_URL}" -n "${RELEASE_NOTES}" -s "${SIZE}"
