@@ -45,27 +45,6 @@ jobs:
       contents: write
 
     steps:
-      - name: Fetch Release Notes
-        id: fetch_release_notes
-        run: |
-          set -e
-          echo "Fetching release notes from: $RELEASE_INFO_URL"
-          
-          RELEASE_INFO=$(curl --silent --show-error --fail -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" --request GET --url "$RELEASE_INFO_URL")
-          
-          RELEASE_NOTES=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body',''))")
-          
-          echo "Fetched release notes: \n${RELEASE_NOTES}"
-          if [[ -z "$RELEASE_NOTES" ]]; then
-            echo "::error::Failed to extract 'body' from release JSON."
-            exit 1
-          fi
-
-          {
-              echo "release_notes<<'EOF'"
-              printf '%s\n' "$RELEASE_NOTES"
-              echo "EOF"
-          } >> "$GITHUB_OUTPUT"
 
       - name: Check out repository
         uses: actions/checkout@v4
@@ -167,9 +146,19 @@ jobs:
           RELEASE_TAG: ${{ github.event.inputs.release_tag }}
           CATBOX_URL: ${{ steps.upload_catbox.outputs.catbox_url }}
           SIZE: ${{ steps.inject_tweak.outputs.patched_ipa_size }}
-          RELEASE_NOTES: ${{ steps.fetch_release_notes.outputs.release_notes }}
         run: |
           set -e
+          echo "Fetching release notes from: $RELEASE_INFO_URL"
+          
+          RELEASE_INFO=$(curl --silent --show-error --fail -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" --request GET --url "$RELEASE_INFO_URL")
+          
+          RELEASE_NOTES=$(printf '%s' "$RELEASE_INFO" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body',''))")
+          
+          echo "Fetched release notes: \n${RELEASE_NOTES}"
+          if [[ -z "$RELEASE_NOTES" ]]; then
+            echo "::error::Failed to extract 'body' from release JSON."
+            exit 1
+          fi
 
           # configure commit author
           git config user.name "github-actions[bot]"
