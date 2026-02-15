@@ -134,7 +134,7 @@ jobs:
           
           echo "Uploading patched IPA to Catbox named: ${{ steps.inject_tweak.outputs.patched_ipa_name }}"
           
-          ./catbox.sh -V upload "${{ steps.inject_tweak.outputs.patched_ipa_name }}" -u "$CATBOX_USER_HASH"
+          ./catbox.sh file "${{ steps.inject_tweak.outputs.patched_ipa_name }}" -u "$CATBOX_USER_HASH"
           
           CATBOX_LINK=$(cat catbox_link.txt)
           echo "Catbox file link: ${CATBOX_LINK}"
