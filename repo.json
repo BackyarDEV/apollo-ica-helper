@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/b5q246.ipa",
+          "size": 96233956,
+          "version": "1.4.2",
+          "buildVersion": "1",
+          "date": "2026-02-15T08:38:35.897327+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 1.4.2 patched with Liquid Glass support.\n\n- Update default trending subreddit source to `https://jeffreyca.github.io/subreddits/trending-subriff-blended.txt` ([source](https://github.com/JeffreyCA/subreddits?tab=readme-ov-file#trending-subriff-blendedtxt))\r\n    - Previous source has been discontinued\r\n- Fix certain GIFs playing at 2x speed on 120Hz displays (#97)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/8f78nc.ipa",
           "size": 96233192,
           "version": "1.4.1",
@@ -82,10 +91,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "1.4.1",
-      "versionDate": "2026-02-15T07:38:56.597487+00:00",
-      "size": 96233192,
-      "downloadURL": "https://files.catbox.moe/8f78nc.ipa"
+      "version": "1.4.2",
+      "versionDate": "2026-02-15T08:38:35.897327+00:00",
+      "size": 96233956,
+      "downloadURL": "https://files.catbox.moe/b5q246.ipa"
     }
   ]
 }
