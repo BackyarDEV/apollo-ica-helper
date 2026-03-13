@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/zxx9st.ipa",
+          "size": 96306702,
+          "version": "2.1.0",
+          "buildVersion": "1",
+          "date": "2026-03-13T12:30:49.415311+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.1.0 patched with Liquid Glass support.\n\n- Add Steam store deep linking support (thanks @wdeezy for the contribution!) (#110)\r\n    - To enable, toggle \"Open Steam Links in App\" in Custom API > General\r\n- Update default recently read posts limit to be unlimited\r\n- Fix share links opening in different Apollo app (#113)\r\n- Fix Pixel Pals making dynamic island taller than expected on newer iPhone models (#111)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/mwpcy2.ipa",
           "size": 96302758,
           "version": "2.0.0",
@@ -127,10 +136,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.0.0",
-      "versionDate": "2026-03-10T16:32:57.223796+00:00",
-      "size": 96302758,
-      "downloadURL": "https://files.catbox.moe/mwpcy2.ipa"
+      "version": "2.1.0",
+      "versionDate": "2026-03-13T12:30:49.415311+00:00",
+      "size": 96306702,
+      "downloadURL": "https://files.catbox.moe/zxx9st.ipa"
     }
   ]
 }
