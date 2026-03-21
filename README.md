@@ -26,4 +26,5 @@ Add the repo to your signing app by clicking the button below:
 ### Credits
 <hr>
 
+* [Christian Selig](https://christianselig.com/) for creating the original [Apollo App](https://apolloapp.io/).
 * [JefferyCA](https://github.com/jeffreyca/) for continuosly updating the Apollo ImprovedCustomAPI tweak.
