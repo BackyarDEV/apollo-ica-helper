@@ -1,5 +1,4 @@
 # Apollo ICA Helper
-<hr>
 
 [![Inject ICA Tweak](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml/badge.svg)](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml) [![Inject ICA Tweak](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml/badge.svg?branch=main&event=release)](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml)
 
