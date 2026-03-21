@@ -1,6 +1,6 @@
 # Apollo ICA Helper
 
-[![Inject ICA Tweak](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml/badge.svg)](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml) [![Inject ICA Tweak](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml/badge.svg?branch=main&event=release)](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml)
+[![Patch and Release](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml/badge.svg)](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml) [![Patch and Release](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml/badge.svg?event=release)](https://github.com/BackyarDEV/apollo-ica-helper/actions/workflows/patchApolloIpa.yml)
 
 
 A helper repository for automatically patching the decrypted Apollo IPA with the [Apollo ImprovedCustomAPI](https://github.com/jeffreyca/apollo-improvedcustomapi) by [JefferyCA](https://github.com/jeffreyca/).
