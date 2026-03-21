@@ -1,4 +1,4 @@
-name: Inject ICA Tweak
+name: Patch and Release
 
 # NOTE: This workflow injects the ApolloICA tweak in the Apollo IPA.
 #

@@ -18,15 +18,6 @@
       "category": "News",
       "versions": [
         {
-          "downloadURL": "https://files.catbox.moe/jj0gqn.ipa",
-          "size": 96307299,
-          "version": "2.2.0",
-          "buildVersion": "1",
-          "date": "2026-03-21T03:03:00.760295+00:00",
-          "localizedDescription": "This version includes the ApolloICA tweak version: 2.2.0 patched with Liquid Glass support.\n\n- Add \"Collapse Pinned Comments\" setting to auto-collapse pinned/stickied comments (#118)\r\n- Add \"Can't sign in?\" troubleshooting section (#112)\r\n- Liquid Glass: fix blur overlay issue when viewing messages (#116)",
-          "minOSVersion": "26.0"
-        },
-        {
           "downloadURL": "https://files.catbox.moe/zxx9st.ipa",
           "size": 96306702,
           "version": "2.1.0",
@@ -145,10 +136,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.2.0",
-      "versionDate": "2026-03-21T03:03:00.760295+00:00",
-      "size": 96307299,
-      "downloadURL": "https://files.catbox.moe/jj0gqn.ipa"
+      "version": "2.1.0",
+      "versionDate": "2026-03-13T12:30:49.415311+00:00",
+      "size": 96306702,
+      "downloadURL": "https://files.catbox.moe/zxx9st.ipa"
     }
   ]
 }
