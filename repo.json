@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/m1kxyp.ipa",
+          "size": 96309583,
+          "version": "2.2.1",
+          "buildVersion": "1",
+          "date": "2026-03-26T02:28:34.347284+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.2.1 patched with Liquid Glass support.\n\n- Block additional tracking and analytics URLs (#124, thanks @Uranosphaerite!)\r\n- Liquid Glass: fix header flicker issue in comments (#126)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/qagmgf.ipa",
           "size": 96307299,
           "version": "2.2.0",
@@ -145,10 +154,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.2.0",
-      "versionDate": "2026-03-21T06:06:10.585744+00:00",
-      "size": 96307299,
-      "downloadURL": "https://files.catbox.moe/qagmgf.ipa"
+      "version": "2.2.1",
+      "versionDate": "2026-03-26T02:28:34.347284+00:00",
+      "size": 96309583,
+      "downloadURL": "https://files.catbox.moe/m1kxyp.ipa"
     }
   ]
 }
