@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/jgl3kz.ipa",
+          "size": 96312305,
+          "version": "2.3.0",
+          "buildVersion": "1",
+          "date": "2026-04-10T02:14:50.537291+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.3.0 patched with Liquid Glass support.\n\n- Add option to hide NSFW posts in Recently Read (#129)\r\n- Show inline NSFW badge on post titles in Recently Read\r\n- Use distinct placeholder thumbnails for self-posts vs link posts in Recently Read",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/m1kxyp.ipa",
           "size": 96309583,
           "version": "2.2.1",
@@ -154,10 +163,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.2.1",
-      "versionDate": "2026-03-26T02:28:34.347284+00:00",
-      "size": 96309583,
-      "downloadURL": "https://files.catbox.moe/m1kxyp.ipa"
+      "version": "2.3.0",
+      "versionDate": "2026-04-10T02:14:50.537291+00:00",
+      "size": 96312305,
+      "downloadURL": "https://files.catbox.moe/jgl3kz.ipa"
     }
   ]
 }
