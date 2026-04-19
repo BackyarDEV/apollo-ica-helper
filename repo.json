@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/6d5bmt.ipa",
+          "size": 96314813,
+          "version": "2.4.0",
+          "buildVersion": "1",
+          "date": "2026-04-19T08:46:07.979724+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.4.0 patched with Liquid Glass support.\n\n- Add option to proxy Imgur images through DuckDuckGo for regional blocks (#138)\r\n    - Enable in **Settings > General > Custom API > Media**\r\n    - Only supports viewing single images; albums are not supported",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/jgl3kz.ipa",
           "size": 96312305,
           "version": "2.3.0",
@@ -163,10 +172,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.3.0",
-      "versionDate": "2026-04-10T02:14:50.537291+00:00",
-      "size": 96312305,
-      "downloadURL": "https://files.catbox.moe/jgl3kz.ipa"
+      "version": "2.4.0",
+      "versionDate": "2026-04-19T08:46:07.979724+00:00",
+      "size": 96314813,
+      "downloadURL": "https://files.catbox.moe/6d5bmt.ipa"
     }
   ]
 }
