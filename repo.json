@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/o4pc70.ipa",
+          "size": 96359253,
+          "version": "2.5.0",
+          "buildVersion": "1",
+          "date": "2026-04-29T04:11:36.441859+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.5.0 patched with Liquid Glass support.\n\n- New bulk translation feature for comment threads and self posts (thanks @icpryde for implementing this feature!) (#140)\r\n    - When enabled, loaded comments are translated in-place. Configure in **Settings > Translation**\r\n    - Adds a per-thread globe toggle to switch between translated and original text in comments view\r\n    - Supports both Google and LibreTranslate, with custom LibreTranslate URL and API key\r\n    - Translations persist in place while voting, collapsing and expanding comments, opening previews, scrolling, and refreshing the thread\r\n    - Preserves links while translated and leaves code or preformatted content untranslated\r\n\r\n| | |\r\n|:--:|:--:|\r\n| <img src=\"https://github.com/user-attachments/assets/68801917-e489-4999-99cf-88dbaf0588c5\" alt=\"Translation\" width=\"500\"> | <img src=\"https://github.com/user-attachments/assets/ba8c530b-727d-4d64-a332-2e1ce648e7b7\" alt=\"Tread\" width=\"500\"> |",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/6d5bmt.ipa",
           "size": 96314813,
           "version": "2.4.0",
@@ -172,10 +181,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.4.0",
-      "versionDate": "2026-04-19T08:46:07.979724+00:00",
-      "size": 96314813,
-      "downloadURL": "https://files.catbox.moe/6d5bmt.ipa"
+      "version": "2.5.0",
+      "versionDate": "2026-04-29T04:11:36.441859+00:00",
+      "size": 96359253,
+      "downloadURL": "https://files.catbox.moe/o4pc70.ipa"
     }
   ]
 }
