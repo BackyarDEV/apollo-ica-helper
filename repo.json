@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/32x2yg.ipa",
+          "size": 96402194,
+          "version": "2.6.0",
+          "buildVersion": "1",
+          "date": "2026-05-01T03:46:42.419155+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.6.0 patched with Liquid Glass support.\n\n- Bulk translation improvements (thanks @icpryde for continuing to refine this!)\r\n    - New **Don't Translate** languages list in **Settings > Translation** to keep selected languages untranslated\r\n    - New option to translate post titles in **Settings > Translation**\r\n    - Various bug fixes and stability improvements\r\n- Tap a comment or post's relative-time label (e.g. \"2.8y\") to show an alert with the absolute creation date and time, mirroring Apollo's existing \"Edited\" alert (#144)\r\n- Liquid Glass: fix tab bar not reappearing on scrolling up when \"Hide Bars on Scroll\" is enabled (thanks @icpryde for the fix!) (#131, #73)\r\n- Liquid Glass: hide translucent status bar background strip that appears at the top of the screen when \"Hide Bars on Scroll\" is enabled\r\n- Liquid Glass: fix first list row being clipped under nav bar in subreddit list view when \"Hide Bars on Scroll\" is enabled",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/o4pc70.ipa",
           "size": 96359253,
           "version": "2.5.0",
@@ -181,10 +190,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.5.0",
-      "versionDate": "2026-04-29T04:11:36.441859+00:00",
-      "size": 96359253,
-      "downloadURL": "https://files.catbox.moe/o4pc70.ipa"
+      "version": "2.6.0",
+      "versionDate": "2026-05-01T03:46:42.419155+00:00",
+      "size": 96402194,
+      "downloadURL": "https://files.catbox.moe/32x2yg.ipa"
     }
   ]
 }
