@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/eus2u9.ipa",
+          "size": 96401348,
+          "version": "2.6.1",
+          "buildVersion": "1",
+          "date": "2026-05-02T01:32:44.920064+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.6.1 patched with Liquid Glass support.\n\nFix tab bar disappearing after using iOS share sheet",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/32x2yg.ipa",
           "size": 96402194,
           "version": "2.6.0",
@@ -190,10 +199,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.6.0",
-      "versionDate": "2026-05-01T03:46:42.419155+00:00",
-      "size": 96402194,
-      "downloadURL": "https://files.catbox.moe/32x2yg.ipa"
+      "version": "2.6.1",
+      "versionDate": "2026-05-02T01:32:44.920064+00:00",
+      "size": 96401348,
+      "downloadURL": "https://files.catbox.moe/eus2u9.ipa"
     }
   ]
 }
