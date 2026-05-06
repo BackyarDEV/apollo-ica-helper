@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/g1t0ca.ipa",
+          "size": 96417586,
+          "version": "2.7.0",
+          "buildVersion": "1",
+          "date": "2026-05-06T04:14:15.704600+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.7.0 patched with Liquid Glass support.\n\n- New **Tag Filters** feature to blur NSFW and/or Spoiler posts (including titles) in feeds (thanks @icpryde for implementing this!)\r\n    - Configure in **Settings > Tag Filters**\r\n    - Tap a blurred post for a \"View hidden post?\" confirmation alert\r\n    - Per-subreddit overrides let you toggle NSFW or Spoiler filtering for individual subreddits\r\n- Bulk translation fixes (thanks @icpryde!):\r\n    - Fix post body briefly flashing the original language after voting, and not reverting when toggling translation off while scrolled past the body\r\n    - Fix comment cells being skipped when toggling translation, and translations appearing half-applied after returning to Apollo from another app\r\n    - Fix plain multi-paragraph post bodies being skipped\r\n\r\n| | | |\r\n|:--:|:--:|:--:|\r\n| <img src=\"https://github.com/user-attachments/assets/0afc73f7-3cdd-4f2a-97ed-5950384285cb\" alt=\"\" width=\"500\"> | <img src=\"https://github.com/user-attachments/assets/037026b8-7886-4c20-a3df-d120f7daf5cd\" alt=\"\" width=\"500\"> | <img src=\"https://github.com/user-attachments/assets/76aa7762-7a44-49d4-86d1-a05b50a44d14\" alt=\"\" width=\"500\"> |",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/eus2u9.ipa",
           "size": 96401348,
           "version": "2.6.1",
@@ -199,10 +208,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.6.1",
-      "versionDate": "2026-05-02T01:32:44.920064+00:00",
-      "size": 96401348,
-      "downloadURL": "https://files.catbox.moe/eus2u9.ipa"
+      "version": "2.7.0",
+      "versionDate": "2026-05-06T04:14:15.704600+00:00",
+      "size": 96417586,
+      "downloadURL": "https://files.catbox.moe/g1t0ca.ipa"
     }
   ]
 }
