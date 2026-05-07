@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/9g6enw.ipa",
+          "size": 96421508,
+          "version": "2.7.1",
+          "buildVersion": "1",
+          "date": "2026-05-07T03:42:54.896664+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.7.1 patched with Liquid Glass support.\n\n- Bulk translation: fix post titles getting automatically translated when Auto Translate is off (thanks @icpryde!) (#150)\r\n- Fix crash when searching for a URL in the Search tab. URL searches now return posts that link to that URL. (#152)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/g1t0ca.ipa",
           "size": 96417586,
           "version": "2.7.0",
@@ -208,10 +217,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.7.0",
-      "versionDate": "2026-05-06T04:14:15.704600+00:00",
-      "size": 96417586,
-      "downloadURL": "https://files.catbox.moe/g1t0ca.ipa"
+      "version": "2.7.1",
+      "versionDate": "2026-05-07T03:42:54.896664+00:00",
+      "size": 96421508,
+      "downloadURL": "https://files.catbox.moe/9g6enw.ipa"
     }
   ]
 }
