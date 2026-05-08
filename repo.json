@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/ytm8ho.ipa",
+          "size": 96421600,
+          "version": "2.7.2",
+          "buildVersion": "1",
+          "date": "2026-05-08T03:23:45.273337+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.7.2 patched with Liquid Glass support.\n\n- Bulk translation: add Bosnian language support (thanks @hllvc!) (#154)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/9g6enw.ipa",
           "size": 96421508,
           "version": "2.7.1",
@@ -217,10 +226,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.7.1",
-      "versionDate": "2026-05-07T03:42:54.896664+00:00",
-      "size": 96421508,
-      "downloadURL": "https://files.catbox.moe/9g6enw.ipa"
+      "version": "2.7.2",
+      "versionDate": "2026-05-08T03:23:45.273337+00:00",
+      "size": 96421600,
+      "downloadURL": "https://files.catbox.moe/ytm8ho.ipa"
     }
   ]
 }
