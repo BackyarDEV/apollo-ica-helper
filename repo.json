@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/z3s6f1.ipa",
+          "size": 96458261,
+          "version": "2.8.0",
+          "buildVersion": "1",
+          "date": "2026-05-09T04:56:16.605043+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.8.0 patched with Liquid Glass support.\n\n- Support for uploading images directly to Reddit instead of Imgur (thanks @icpryde for the implementation!) (#123)\r\n    - Configure in **Settings > Custom API > Media > Image Upload Host**\r\n    - Reddit image upload is **experimental** and does not currently support multi-image or video uploads\r\n    - It's normal to see an `amazonaws.com` URL after attaching an image - it is replaced after posting\r\n    - Right after posting, Apollo may briefly show a generic preview icon while Reddit finishes processing the image. Pull to refresh and the real thumbnail should appear\r\n\r\n| | | |\r\n|:--:|:--:|:--:|\r\n| <img src=\"https://github.com/user-attachments/assets/9c129cc9-3580-4c4d-8696-591308fc4a70\" alt=\"\" width=\"500\"> | <img src=\"https://github.com/user-attachments/assets/3e689a33-6ff7-4263-bb0e-ac2208d60a9b\" alt=\"\" width=\"500\"> | <img src=\"https://github.com/user-attachments/assets/10f87933-db5c-4d16-aabf-396a8332d1c0\" alt=\"\" width=\"500\"> |",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/ytm8ho.ipa",
           "size": 96421600,
           "version": "2.7.2",
@@ -226,10 +235,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.7.2",
-      "versionDate": "2026-05-08T03:23:45.273337+00:00",
-      "size": 96421600,
-      "downloadURL": "https://files.catbox.moe/ytm8ho.ipa"
+      "version": "2.8.0",
+      "versionDate": "2026-05-09T04:56:16.605043+00:00",
+      "size": 96458261,
+      "downloadURL": "https://files.catbox.moe/z3s6f1.ipa"
     }
   ]
 }
