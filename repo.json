@@ -18,6 +18,15 @@
       "category": "News",
       "versions": [
         {
+          "downloadURL": "https://files.catbox.moe/8m82sy.ipa",
+          "size": 149167954,
+          "version": "2.13.0",
+          "buildVersion": "1",
+          "date": "2026-05-20T02:10:00.808916+00:00",
+          "localizedDescription": "This version includes the ApolloICA tweak version: 2.13.0 patched with Liquid Glass support.\n\n### Features\r\n\r\n- Add **Rich Link Previews**: first-party cards for YouTube, Reddit, GitHub, Wikipedia, Twitter/X, Bluesky, and a configurable preview card colour (thanks @icpryde, @DeltAndy123!)\r\n    - Configurable for posts and comments separately between with Full, Compact, and Off in **Settings > Custom API > Media**\r\n\r\n    | Compact | Full | Twitter/X | Bluesky |\r\n    | --- | --- | --- | --- |\r\n    | <img width=\"400\" alt=\"rich-compact-2\" src=\"https://github.com/user-attachments/assets/df5f71a2-33c6-4a7e-a04d-45203b2ef481\" /> | <img width=\"400\" alt=\"rich-full-2\" src=\"https://github.com/user-attachments/assets/cd0e5950-bcd7-46f9-8f17-4acd0db2a0ba\" /> | <img width=\"400\" alt=\"rich-twitter\" src=\"https://github.com/user-attachments/assets/be7ddd87-f351-49b4-bc7e-898db7ea5588\" /> | <img width=\"400\" alt=\"rich-bluesky\" src=\"https://github.com/user-attachments/assets/451ec56a-10a7-4ba8-a623-65cc2c07ceae\" /> |\r\n- Profile pages now include Reddit display name, about text, and an Edit button that opens Reddit's profile editor (thanks @icpryde!)\r\n- New **Profile Picture Tab Icon** setting (**Settings > Custom API > Media**) that displays user profile picture in the tab bar (thanks @icpryde!).\r\n- Polish subreddit list view with a custom alphabet index overlay, larger favourite-star hit targets, and a **Modern Subreddit Dividers** style (**Settings > Custom API > Subreddits**) (thanks @icpryde!)\r\n- Liquid Glass: replace action sheets with native iOS action menus throughout the app\r\n  | Menu sheet | Menu popover |\r\n  | --- | --- |\r\n  | <img width=\"200\" alt=\"menu-2\" src=\"https://github.com/user-attachments/assets/d81e5829-b911-47aa-b14b-19517142f4c7\" /> | <img width=\"200\" alt=\"menu-1\" src=\"https://github.com/user-attachments/assets/f4499a58-c92c-4f00-87c5-10ae896316ff\" /> |\r\n\r\n- Liquid Glass: add new **Sunset** app icon (thanks @bajader!), rename icons, and show icon designer names in the picker\r\n\r\n| User avatars | Subreddit list | App icon | Settings |\r\n| --- | --- | --- | --- |\r\n| <img width=\"400\" alt=\"avatar-profile\" src=\"https://github.com/user-attachments/assets/a343d7b6-60e1-4f0b-b25e-e3774cd4a686\" /> | <img width=\"400\" alt=\"subreddit-list\" src=\"https://github.com/user-attachments/assets/dfd70051-5863-46fc-80fe-534a34ec652c\" /> | <img width=\"400\" alt=\"icon\" src=\"https://github.com/user-attachments/assets/8b3a6359-bcdd-4c54-98c1-0b7cf61bfd9e\" /> | <img width=\"400\" alt=\"settings\" src=\"https://github.com/user-attachments/assets/eb2adbb8-40b7-42e9-9ea2-7b1243ed67e2\" /> |\r\n\r\n\r\n### Fixes\r\n\r\n- Fix user profile pictures appearing inside flair text\r\n- Fix the media post body text editor in subreddits that do not expose Apollo's normal Text tab (thanks @icpryde!)\r\n- Fix subreddit list view scroll position shifting after favouriting a subreddit\r\n- Fix stale subreddit entries lingering after unfavouriting from Favourites section\r\n- Liquid Glass: fix separators blocking alphabet in subreddit list view (thanks @icpryde!)\r\n- Update Custom API settings view to match app theme (thanks @icpryde!)\r\n- Add statsigapi.net to the blocked URL list (thanks @epheterson!)",
+          "minOSVersion": "26.0"
+        },
+        {
           "downloadURL": "https://files.catbox.moe/8nldj6.ipa",
           "size": 149031432,
           "version": "2.12.0b",
@@ -271,10 +280,10 @@
         }
       ],
       "appPermissions": {},
-      "version": "2.12.0b",
-      "versionDate": "2026-05-17T01:35:03.028858+00:00",
-      "size": 149031432,
-      "downloadURL": "https://files.catbox.moe/8nldj6.ipa"
+      "version": "2.13.0",
+      "versionDate": "2026-05-20T02:10:00.808916+00:00",
+      "size": 149167954,
+      "downloadURL": "https://files.catbox.moe/8m82sy.ipa"
     }
   ]
 }
